@@ -1,6 +1,6 @@
 # Vroomly - Car Sharing Platform
 
-![Vroomly Logo](public/vite.svg)
+live demo: https://vroomly.pmavi.com/  
 
 ## Overview
 
