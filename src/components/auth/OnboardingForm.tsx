@@ -158,9 +158,9 @@ export function OnboardingForm({ onComplete }: OnboardingFormProps) {
         return;
       }
       
-      // Check if file is too large (2MB max for ImgBB free tier)
-      if (file.size > 2 * 1024 * 1024) {
-        setErrors(prev => ({ ...prev, profilePhoto: "Image must be less than 2MB" }));
+      // Check if file is too large (5MB max recommended for Firebase Storage)
+      if (file.size > 5 * 1024 * 1024) {
+        setErrors(prev => ({ ...prev, profilePhoto: "Image must be less than 5MB" }));
         return;
       }
       

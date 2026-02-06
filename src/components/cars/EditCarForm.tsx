@@ -40,6 +40,7 @@ import {
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { uploadImage } from "@/utils/imageUploadService";
 
 // Update the interface to remove title
 interface CarFormData {
@@ -299,30 +300,6 @@ export function EditCarForm({
     }
   };
 
-  // Function to upload image to imgbb
-  const uploadToImgbb = async (file: File): Promise<string> => {
-    const API_KEY = "05b947ec40805816cb8f95006fa85760"; // Replace with your actual imgbb API key
-    const formData = new FormData();
-    formData.append('image', file);
-    
-    try {
-      const response = await fetch(`https://api.imgbb.com/1/upload?key=${API_KEY}`, {
-        method: 'POST',
-        body: formData
-      });
-      
-      const data = await response.json();
-      
-      if (data.success) {
-        return data.data.url;
-      } else {
-        throw new Error(data.error?.message || 'Failed to upload image');
-      }
-    } catch (error) {
-      console.error('Error uploading image:', error);
-      throw new Error('Failed to upload image to server');
-    }
-  };
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!formData) return;
@@ -339,11 +316,11 @@ export function EditCarForm({
         }
         
         setImagePreviews(prev => [...prev, ...tempPreviews]);
-        
-        // Upload to imgbb
+
+        // Upload to Firebase Storage
         const uploadedUrls: string[] = [];
         for (const file of files) {
-          const uploadedUrl = await uploadToImgbb(file);
+          const uploadedUrl = await uploadImage(file, 'cars');
           uploadedUrls.push(uploadedUrl);
         }
         
@@ -374,9 +351,9 @@ export function EditCarForm({
         const tempPreview = URL.createObjectURL(file);
         
         setImagePreviews(prev => [...prev, tempPreview]);
-        
-        // Upload to imgbb
-        const uploadedUrl = await uploadToImgbb(file);
+
+        // Upload to Firebase Storage
+        const uploadedUrl = await uploadImage(file, 'cars');
         
         // Update form data with the uploaded URL
         setFormData(prev => {

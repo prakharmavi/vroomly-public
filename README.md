@@ -91,46 +91,24 @@ Vroomly is a modern car sharing application that enables users to list their veh
    VITE_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
    VITE_FIREBASE_APP_ID=your-app-id
    VITE_FIREBASE_MEASUREMENT_ID=your-measurement-id
-   VITE_IMGBB_API_KEY=your-imgbb-api-key
    ```
 
-4. **Update Firebase configuration**
-   Modify `/src/firebase/firebase.ts` to use environment variables:
-
-   ```typescript
-   const firebaseConfig = {
-     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-     authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-     projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-     storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-     messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-     appId: import.meta.env.VITE_FIREBASE_APP_ID,
-     measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
-   };
-   ```
-
-5. **Update ImgBB API key**
-   Modify `/src/config/api-keys.ts` to use environment variables:
-   ```typescript
-   export const IMGBB_API_KEY = import.meta.env.VITE_IMGBB_API_KEY;
-   ```
-
-6. **Run the development server**
+4. **Run the development server**
    ```bash
    npm run dev
    ```
 
-7. **Open your browser**
+5. **Open your browser**
    Navigate to `http://localhost:5173` to see the application running
 
 ### Firebase Setup
 
 1. Create a new Firebase project at [https://console.firebase.google.com/](https://console.firebase.google.com/)
 2. Enable Authentication with Email/Password and Google providers
-3. Create a Firestore database
-4. Set up Firebase storage
-5. Configure Firebase Hosting
-6. Add your web app to the Firebase project and get the configuration
+3. Create a Firestore database in test mode (you can configure security rules later)
+4. Enable Firebase Storage (used for car images and profile photos)
+5. Configure Firebase Hosting (optional, for deployment)
+6. Add your web app to the Firebase project and copy the configuration values to your `.env` file
 
 ## Project Structure
 

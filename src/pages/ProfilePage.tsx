@@ -166,11 +166,11 @@ export function ProfilePage() {
   }
 
   return (
-    <div className="p-4 sm:p-8 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">My Profile</h1>
+    <div className="container-content mx-auto px-4 sm:px-6 py-8 md:py-12">
+      <h1 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12">My Profile</h1>
       
       {userProfile ? (
-        <div className="space-y-6">
+        <div className="space-y-8 md:space-y-12">
           {/* Profile completion card */}
           {!userProfile.onboardingCompleted && (
             <Card className="border-yellow-200 dark:border-yellow-700 bg-yellow-50 dark:bg-yellow-900/20">
@@ -211,9 +211,9 @@ export function ProfilePage() {
             
             <TabsContent value="overview">
               <Card>
-                <CardHeader className="p-4 sm:p-6 pb-0">
-                  <div className="flex flex-col sm:flex-row items-center gap-4">
-                    <Avatar className="h-20 w-20">
+                <CardHeader className="p-6 sm:p-8 pb-4">
+                  <div className="flex flex-col sm:flex-row items-center gap-6">
+                    <Avatar className="h-24 w-24">
                       {userProfile.profileImageUrl ? (
                         <AvatarImage src={userProfile.profileImageUrl} alt={userProfile.displayName} />
                       ) : (
@@ -221,8 +221,8 @@ export function ProfilePage() {
                       )}
                     </Avatar>
                     <div className="text-center sm:text-left">
-                      <h2 className="text-xl font-bold">{userProfile.displayName}</h2>
-                      <p className="text-muted-foreground">@{userProfile.username}</p>
+                      <h2 className="text-2xl md:text-3xl font-bold">{userProfile.displayName}</h2>
+                      <p className="text-muted-foreground text-base mt-1">@{userProfile.username}</p>
                       {userProfile.occupation && (
                         <p className="text-sm flex items-center mt-1">
                           <Briefcase className="h-3.5 w-3.5 mr-1" />
@@ -241,23 +241,23 @@ export function ProfilePage() {
                     </Button>
                   </div>
                 </CardHeader>
-                <CardContent className="p-4 sm:p-6 pt-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <h3 className="font-medium text-sm">Contact Information</h3>
-                      <p className="text-sm flex items-center">
-                        <Mail className="h-4 w-4 mr-2 text-muted-foreground" />
+                <CardContent className="p-6 sm:p-8 pt-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-3">
+                      <h3 className="font-semibold text-base mb-3">Contact Information</h3>
+                      <p className="text-sm flex items-center py-1">
+                        <Mail className="h-4 w-4 mr-3 text-muted-foreground" />
                         <span className="text-muted-foreground">{userProfile.email}</span>
                       </p>
                       {userProfile.phoneNumber && (
-                        <p className="text-sm flex items-center">
-                          <Phone className="h-4 w-4 mr-2 text-muted-foreground" />
+                        <p className="text-sm flex items-center py-1">
+                          <Phone className="h-4 w-4 mr-3 text-muted-foreground" />
                           <span className="text-muted-foreground">{userProfile.phoneNumber}</span>
                         </p>
                       )}
                       {userProfile.website && (
-                        <p className="text-sm flex items-center">
-                          <Globe className="h-4 w-4 mr-2 text-muted-foreground" />
+                        <p className="text-sm flex items-center py-1">
+                          <Globe className="h-4 w-4 mr-3 text-muted-foreground" />
                           <a 
                             href={userProfile.website.startsWith('http') ? userProfile.website : `https://${userProfile.website}`} 
                             target="_blank" 
@@ -270,11 +270,11 @@ export function ProfilePage() {
                       )}
                     </div>
                     
-                    <div className="space-y-2">
-                      <h3 className="font-medium text-sm">Location</h3>
+                    <div className="space-y-3">
+                      <h3 className="font-semibold text-base mb-3">Location</h3>
                       {(userProfile.city || userProfile.state) && (
-                        <p className="text-sm flex items-center">
-                          <MapPin className="h-4 w-4 mr-2 text-muted-foreground" />
+                        <p className="text-sm flex items-center py-1">
+                          <MapPin className="h-4 w-4 mr-3 text-muted-foreground" />
                           <span className="text-muted-foreground">
                             {[userProfile.city, userProfile.state].filter(Boolean).join(", ")}
                           </span>
@@ -296,9 +296,9 @@ export function ProfilePage() {
                   </div>
                   
                   {userProfile.bio && (
-                    <div className="mt-4">
-                      <h3 className="font-medium text-sm mb-2">About Me</h3>
-                      <p className="text-sm text-muted-foreground">{userProfile.bio}</p>
+                    <div className="mt-6 pt-6 border-t">
+                      <h3 className="font-semibold text-base mb-3">About Me</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{userProfile.bio}</p>
                     </div>
                   )}
                   
@@ -382,19 +382,19 @@ export function ProfilePage() {
             </TabsContent>
             
             <TabsContent value="details">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Card>
-                  <CardHeader className="pb-2">
-                    <h3 className="text-lg font-semibold">Personal Information</h3>
+                  <CardHeader className="pb-4">
+                    <h3 className="text-xl font-semibold">Personal Information</h3>
                   </CardHeader>
-                  <CardContent className="space-y-2">
-                    <div className="flex justify-between text-sm border-b pb-2">
+                  <CardContent className="space-y-3">
+                    <div className="flex justify-between text-sm border-b pb-3">
                       <span className="font-medium">Date of Birth</span>
                       <span className="text-muted-foreground">
                         {userProfile.dateOfBirth ? new Date(userProfile.dateOfBirth as any).toLocaleDateString() : "Not provided"}
                       </span>
                     </div>
-                    <div className="flex justify-between text-sm border-b pb-2">
+                    <div className="flex justify-between text-sm border-b pb-3">
                       <span className="font-medium">Occupation</span>
                       <span className="text-muted-foreground">{userProfile.occupation || "Not provided"}</span>
                     </div>
@@ -406,11 +406,11 @@ export function ProfilePage() {
                 </Card>
                 
                 <Card>
-                  <CardHeader className="pb-2">
-                    <h3 className="text-lg font-semibold">Driver Information</h3>
+                  <CardHeader className="pb-4">
+                    <h3 className="text-xl font-semibold">Driver Information</h3>
                   </CardHeader>
-                  <CardContent className="space-y-2">
-                    <div className="flex justify-between text-sm border-b pb-2">
+                  <CardContent className="space-y-3">
+                    <div className="flex justify-between text-sm border-b pb-3">
                       <span className="font-medium">Driver's License</span>
                       <span className="text-muted-foreground">
                         {userProfile.driverLicense ? 
@@ -421,7 +421,7 @@ export function ProfilePage() {
                           : "Not provided"}
                       </span>
                     </div>
-                    <div className="flex justify-between text-sm border-b pb-2">
+                    <div className="flex justify-between text-sm border-b pb-3">
                       <span className="font-medium">Account Verified</span>
                       <span className="text-muted-foreground">
                         {userProfile.accountVerified ? 
@@ -444,17 +444,17 @@ export function ProfilePage() {
                 </Card>
                 
                 <Card>
-                  <CardHeader className="pb-2">
-                    <h3 className="text-lg font-semibold">Emergency Contact</h3>
+                  <CardHeader className="pb-4">
+                    <h3 className="text-xl font-semibold">Emergency Contact</h3>
                   </CardHeader>
                   <CardContent>
                     {userProfile.emergencyContact?.name ? (
-                      <div className="space-y-2">
-                        <div className="flex justify-between text-sm border-b pb-2">
+                      <div className="space-y-3">
+                        <div className="flex justify-between text-sm border-b pb-3">
                           <span className="font-medium">Name</span>
                           <span className="text-muted-foreground">{userProfile.emergencyContact.name}</span>
                         </div>
-                        <div className="flex justify-between text-sm border-b pb-2">
+                        <div className="flex justify-between text-sm border-b pb-3">
                           <span className="font-medium">Relationship</span>
                           <span className="text-muted-foreground">{userProfile.emergencyContact.relationship || "Not specified"}</span>
                         </div>
@@ -470,19 +470,19 @@ export function ProfilePage() {
                 </Card>
                 
                 <Card>
-                  <CardHeader className="pb-2">
-                    <h3 className="text-lg font-semibold">Account Details</h3>
+                  <CardHeader className="pb-4">
+                    <h3 className="text-xl font-semibold">Account Details</h3>
                   </CardHeader>
-                  <CardContent className="space-y-2">
-                    <div className="flex justify-between text-sm border-b pb-2">
+                  <CardContent className="space-y-3">
+                    <div className="flex justify-between text-sm border-b pb-3">
                       <span className="font-medium">User ID</span>
                       <span className="text-muted-foreground truncate max-w-[200px]">{userProfile.uid}</span>
                     </div>
-                    <div className="flex justify-between text-sm border-b pb-2">
+                    <div className="flex justify-between text-sm border-b pb-3">
                       <span className="font-medium">Username</span>
                       <span className="text-muted-foreground">@{userProfile.username}</span>
                     </div>
-                    <div className="flex justify-between text-sm border-b pb-2">
+                    <div className="flex justify-between text-sm border-b pb-3">
                       <span className="font-medium">Created</span>
                       <span className="text-muted-foreground">
                         {userProfile.createdAt ? new Date(userProfile.createdAt.toDate()).toLocaleString() : "Unknown"}

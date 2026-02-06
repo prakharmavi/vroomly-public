@@ -2,42 +2,11 @@ import { doc, getDoc,  serverTimestamp, runTransaction } from "firebase/firestor
 import db from "../firestore";
 import { User } from "firebase/auth";
 import { UserProfile } from "../model/usermodel";
-
-import { IMGBB_API_KEY } from "@/config/api-keys";
+import { uploadImage } from "@/utils/imageUploadService";
 
 interface UserProfileResult {
   success: boolean;
   error?: string;
-}
-
-/**
- * Upload an image to ImgBB
- * @param file The image file to upload
- * @returns Promise with the image URL or null if failed
- */
-async function uploadImageToImgBB(file: File): Promise<string | null> {
-  try {
-    const formData = new FormData();
-    formData.append('image', file);
-    formData.append('key', IMGBB_API_KEY);
-
-    const response = await fetch('https://api.imgbb.com/1/upload', {
-      method: 'POST',
-      body: formData,
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      return data.data.url;
-    } else {
-      console.error("Failed to upload image to ImgBB:", data);
-      throw new Error(`ImgBB upload failed: ${data.error?.message || 'Unknown error'}`);
-    }
-  } catch (error) {
-    console.error("Error uploading image to ImgBB:", error);
-    throw error; // Rethrow to handle in the component
-  }
 }
 
 /**
@@ -82,9 +51,9 @@ export async function saveUserProfile(
       // Handle photo upload if provided
       if (photoFile) {
         try {
-          // Upload to ImgBB instead of Firebase Storage
-          const imgUrl = await uploadImageToImgBB(photoFile);
-          
+          // Upload to Firebase Storage
+          const imgUrl = await uploadImage(photoFile, 'profiles');
+
           if (imgUrl) {
             profileImageUrl = imgUrl;
             userProvidedPhoto = true;

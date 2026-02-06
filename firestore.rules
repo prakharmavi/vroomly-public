@@ -1,0 +1,13 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Test mode - Allow all reads and writes
+    // WARNING: This is for development only. Update before production!
+    // These rules allow anyone to read or write to your database.
+    // You should configure more secure rules before going to production.
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

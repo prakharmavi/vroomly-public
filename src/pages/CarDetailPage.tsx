@@ -232,8 +232,8 @@ export function CarDetailPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-6 max-w-7xl">
-      <div className="flex flex-col gap-8">
+    <div className="container-standard mx-auto px-4 sm:px-6 py-8 md:py-12">
+      <div className="flex flex-col gap-10 md:gap-12">
         {/* Navigation */}
         <div>
           <Button 
@@ -245,7 +245,7 @@ export function CarDetailPage() {
             <span>Back to Listings</span>
           </Button>
           
-          <h1 className="text-2xl sm:text-3xl font-bold mb-2">{car.title}</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{car.title}</h1>
           
           <div className="flex flex-wrap gap-3 mb-2">
             <div className="flex items-center text-sm text-muted-foreground">
@@ -280,7 +280,7 @@ export function CarDetailPage() {
           </Alert>
         )}
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Left column: Images and details */}
           <div className="lg:col-span-2 space-y-6">
             {/* Image gallery */}
@@ -294,51 +294,51 @@ export function CarDetailPage() {
             
             {/* Car specs */}
             <Card>
-              <CardContent className="p-6">
-                <h2 className="text-xl font-semibold mb-4">Car Details</h2>
-                
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">Make & Model</p>
-                    <p className="font-medium">{car.carInfo.make} {car.carInfo.model}</p>
+              <CardContent className="p-6 md:p-8">
+                <h2 className="text-2xl font-semibold mb-6">Car Details</h2>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                  <div className="space-y-2">
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground font-medium">Make & Model</p>
+                    <p className="font-semibold text-lg">{car.carInfo.make} {car.carInfo.model}</p>
                   </div>
-                  
-                  <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">Year</p>
-                    <p className="font-medium">{car.carInfo.year}</p>
+
+                  <div className="space-y-2">
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground font-medium">Year</p>
+                    <p className="font-semibold text-lg">{car.carInfo.year}</p>
                   </div>
-                  
-                  <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">Color</p>
+
+                  <div className="space-y-2">
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground font-medium">Color</p>
                     <div className="flex items-center gap-2">
-                      <div 
-                        className="w-4 h-4 rounded-full border" 
+                      <div
+                        className="w-4 h-4 rounded-full border"
                         style={{ backgroundColor: car.carInfo.color.toLowerCase() }}
                       ></div>
-                      <p className="font-medium">{car.carInfo.color}</p>
+                      <p className="font-semibold text-lg">{car.carInfo.color}</p>
                     </div>
                   </div>
-                  
-                  <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">Transmission</p>
-                    <p className="font-medium">{car.carInfo.transmission}</p>
+
+                  <div className="space-y-2">
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground font-medium">Transmission</p>
+                    <p className="font-semibold text-lg">{car.carInfo.transmission}</p>
                   </div>
-                  
-                  <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">Fuel Type</p>
-                    <p className="font-medium">{car.carInfo.fuelType}</p>
+
+                  <div className="space-y-2">
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground font-medium">Fuel Type</p>
+                    <p className="font-semibold text-lg">{car.carInfo.fuelType}</p>
                   </div>
-                  
-                  <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">Seats</p>
-                    <p className="font-medium">{car.carInfo.seats}</p>
+
+                  <div className="space-y-2">
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground font-medium">Seats</p>
+                    <p className="font-semibold text-lg">{car.carInfo.seats}</p>
                   </div>
                 </div>
                 
                 {/* Features badges */}
-                <div className="mt-6">
-                  <h3 className="text-base font-medium mb-3">Features</h3>
-                  <div className="flex flex-wrap gap-2">
+                <div className="mt-8 pt-8 border-t">
+                  <h3 className="text-lg font-semibold mb-4">Features</h3>
+                  <div className="flex flex-wrap gap-3">
                     <FeatureBadge>
                       <Car size={14} />
                       <span>{car.carInfo.seats} seats</span>
@@ -377,13 +377,13 @@ export function CarDetailPage() {
             
             {/* Description */}
             <Card>
-              <CardContent className="p-6">
-                <h2 className="text-xl font-semibold mb-3">Description</h2>
-                <p className="text-muted-foreground">{car.description}</p>
-                
-                <Separator className="my-4" />
-                
-                <h3 className="text-lg font-medium mb-2">Availability</h3>
+              <CardContent className="p-6 md:p-8">
+                <h2 className="text-2xl font-semibold mb-4">Description</h2>
+                <p className="text-muted-foreground leading-relaxed text-base">{car.description}</p>
+
+                <Separator className="my-8" />
+
+                <h3 className="text-xl font-semibold mb-3">Availability</h3>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <CalendarDays size={18} />
                   <span>

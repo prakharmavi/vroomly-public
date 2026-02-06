@@ -138,6 +138,11 @@
     background-size: 200% 200%;
     animation: gradient 6s ease infinite;
   }
+
+  .container-narrow { max-width: 42rem; margin: 0 auto; }
+  .container-content { max-width: 56rem; margin: 0 auto; }
+  .container-standard { max-width: 72rem; margin: 0 auto; }
+  .container-wide { max-width: 90rem; margin: 0 auto; }
 }
 
 @keyframes gradient {

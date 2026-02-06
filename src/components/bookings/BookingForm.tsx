@@ -109,21 +109,21 @@ export function BookingForm({
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1">
-          <DollarSign size={24} className="text-primary" />
-          <span className="text-3xl font-bold">{pricePerDay}</span>
-          <span className="text-lg text-muted-foreground">/day</span>
+    <div className="space-y-8">
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-2">
+          <DollarSign size={28} className="text-primary" />
+          <span className="text-4xl font-bold tracking-tight">{pricePerDay}</span>
+          <span className="text-xl text-muted-foreground">/day</span>
         </div>
       </div>
       
       <Separator />
       
-      <div className="space-y-4">
+      <div className="space-y-6">
         <div>
-          <label className="block text-sm font-medium mb-2">Rental Period</label>
-          <div className="grid grid-cols-2 gap-3">
+          <label className="block text-sm font-semibold mb-3">Rental Period</label>
+          <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col">
               <span className="text-xs text-muted-foreground mb-1">From</span>
               <Popover>
@@ -183,38 +183,38 @@ export function BookingForm({
         </div>
         
         <div>
-          <label className="block text-sm font-medium mb-2">Notes (optional)</label>
-          <Textarea 
+          <label className="block text-sm font-semibold mb-3">Notes (optional)</label>
+          <Textarea
             placeholder="Any special requests or questions for the car owner?"
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="min-h-[80px]"
+            className="min-h-[100px]"
             maxLength={500}
           />
         </div>
       </div>
       
-      <div className="pt-4">
-        <div className="flex items-center justify-between mb-2">
-          <span className="font-medium">Price per day</span>
-          <span>${pricePerDay}</span>
+      <div className="pt-6 border-t">
+        <div className="flex items-center justify-between mb-3">
+          <span className="font-medium text-sm">Price per day</span>
+          <span className="font-medium">${pricePerDay}</span>
         </div>
-        
-        <div className="flex items-center justify-between mb-2">
-          <span className="font-medium">Days</span>
-          <span>{days}</span>
+
+        <div className="flex items-center justify-between mb-3">
+          <span className="font-medium text-sm">Days</span>
+          <span className="font-medium">{days}</span>
         </div>
-        
-        <div className="flex items-center justify-between mb-2 text-sm text-muted-foreground">
+
+        <div className="flex items-center justify-between mb-3 text-sm text-muted-foreground">
           <span>Service fee</span>
           <span>${serviceFee}</span>
         </div>
-        
-        <Separator className="my-3" />
-        
-        <div className="flex items-center justify-between font-bold">
+
+        <Separator className="my-4" />
+
+        <div className="flex items-center justify-between font-bold text-lg">
           <span>Total</span>
-          <span>${totalPrice}</span>
+          <span className="text-xl">${totalPrice}</span>
         </div>
       </div>
       

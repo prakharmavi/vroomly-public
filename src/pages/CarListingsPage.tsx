@@ -100,31 +100,31 @@ const CarListingCard = ({ listing, onViewDetails }: {
         )}
       </div>
       
-      <div className="p-4 space-y-3 flex-grow flex flex-col">
-        <div>
-          <h2 className="text-lg font-semibold line-clamp-1">{listing.title}</h2>
-          <p className="text-sm text-muted-foreground">
+      <div className="p-5 md:p-6 space-y-4 flex-grow flex flex-col">
+        <div className="space-y-1">
+          <h2 className="text-xl font-semibold line-clamp-1">{listing.title}</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed">
             {listing.carInfo.make} {listing.carInfo.model} ({listing.carInfo.year})
           </p>
         </div>
         
-        <div className="flex flex-wrap gap-2 my-1">
-          <span className="bg-muted px-2 py-0.5 rounded-full text-xs flex items-center gap-1">
+        <div className="flex flex-wrap gap-2 mt-3 mb-2">
+          <span className="bg-muted px-3 py-1 rounded-full text-xs flex items-center gap-1.5">
             <Car size={12} />
             {listing.carInfo.seats} seats
           </span>
-          <span className="bg-muted px-2 py-0.5 rounded-full text-xs">
+          <span className="bg-muted px-3 py-1 rounded-full text-xs">
             {listing.carInfo.transmission}
           </span>
-          <span className="bg-muted px-2 py-0.5 rounded-full text-xs">
+          <span className="bg-muted px-3 py-1 rounded-full text-xs">
             {listing.carInfo.fuelType}
           </span>
         </div>
         
         <p className="text-sm text-muted-foreground line-clamp-2 flex-grow">{listing.description}</p>
         
-        <div className="flex items-center text-sm text-muted-foreground">
-          <MapPin size={14} className="mr-1 flex-shrink-0" />
+        <div className="flex items-center text-sm text-muted-foreground mt-1">
+          <MapPin size={16} className="mr-2 flex-shrink-0" />
           <span className="truncate">{listing.location}</span>
         </div>
         
@@ -224,11 +224,11 @@ export function CarListingsPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-6 max-w-7xl">
-      <div className="flex justify-between items-center mb-6">
+    <div className="container-standard mx-auto px-4 sm:px-6 py-8 md:py-12">
+      <div className="flex justify-between items-center mb-8 md:mb-12">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold">Available Cars</h1>
-          <p className="text-muted-foreground mt-1">Find and rent the perfect car for your needs</p>
+          <h1 className="text-3xl md:text-4xl font-bold">Available Cars</h1>
+          <p className="text-muted-foreground mt-2 text-base md:text-lg">Find and rent the perfect car for your needs</p>
         </div>
         <Button onClick={handleAddCar} className="flex items-center gap-2">
           <PlusCircle size={16} />
@@ -263,7 +263,7 @@ export function CarListingsPage() {
           
           {/* Car listing grid */}
           {listings.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
               {listings.map((listing) => (
                 <CarListingCard 
                   key={listing.id} 
